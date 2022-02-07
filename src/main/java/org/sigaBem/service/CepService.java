@@ -35,10 +35,10 @@ public class CepService {
 
         Gson gson = new Gson();
         cepObj = gson.fromJson(jsonEmString, CepDados.class);
-		
-		
         
 		return cepObj;
+		
+		//
 	}
 
 	public Cep calcularFrete(CepDados cepOrigem, CepDados cepDestino, double peso) {
