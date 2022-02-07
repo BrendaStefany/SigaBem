@@ -30,7 +30,7 @@ public class CepController {
 	@Autowired
 	private CepService service;
 
-	@PostMapping
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Cep> consultar(@RequestBody Cep cep) throws InterruptedException {
 		Cep cepResult = null;
 		try {
