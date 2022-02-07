@@ -31,7 +31,10 @@ public class CepController {
 	private CepService service;
 
 	@PostMapping("/calcularFrete")
-	public ResponseEntity<Cep> consultar(@RequestBody Cep cep) throws InterruptedException {
+	public ResponseEntity<Cep> consultar(@RequestBody @Valid Cep cep) throws InterruptedException {
+		
+		
+		
 		Cep cepResult = null;
 		try {
 			CepDados cepOrigem = service.consultar(cep.getCepOrigem());

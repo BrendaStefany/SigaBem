@@ -9,6 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NegativeOrZero;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -17,20 +22,23 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name = "cep")
 public class Cep {
 
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	
+	@Positive(message = "{peso.positive}")
 	private double peso;
 	
-
+	@NotBlank(message = "{cepOrigem.not.blank}")
 	private String cepOrigem;
 	
-	
+	@NotBlank(message = "{cepDestino.not.blank}")
 	private String cepDestino;
 	
-
+	@NotBlank(message = "{nomeDestinatario.not.blank}")
 	private String nomeDestinatario;
 	
 	private double vlTotalFrete;

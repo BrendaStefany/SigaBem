@@ -20,24 +20,29 @@ import com.google.gson.Gson;
 public class CepService {
 
 	String webService = "http://viacep.com.br/ws/";
-	
+
 	public CepDados consultar(String cep) throws IOException, InterruptedException {
+
+		int codigoSucesso = 200;
 
 		CepDados cepObj = new CepDados();
 
 		String urlDaApi = webService + cep + "/json";
 		URL url;
 		url = new URL(urlDaApi);
-        HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+		HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
 
-        BufferedReader resposta = new BufferedReader(new InputStreamReader((conexao.getInputStream())));
-        String jsonEmString = Util.converteJsonEmString(resposta);
+		if (conexao.getResponseCode() != codigoSucesso)
+			throw new RuntimeException("Verifique se os dados estão corretos, error code : " + conexao.getResponseCode());
 
-        Gson gson = new Gson();
-        cepObj = gson.fromJson(jsonEmString, CepDados.class);
-        
+		BufferedReader resposta = new BufferedReader(new InputStreamReader((conexao.getInputStream())));
+		String jsonEmString = Util.converteJsonEmString(resposta);
+
+		Gson gson = new Gson();
+		cepObj = gson.fromJson(jsonEmString, CepDados.class);
+
 		return cepObj;
-		
+
 		//
 	}
 
@@ -48,7 +53,7 @@ public class CepService {
 		int diasPrevistos = 0;
 
 		vlFrete = peso * 1;
-		
+
 		if (cepOrigem.getDdd().equals(cepDestino.getDdd())) {
 			desconto = 0.5;
 			vlFrete = vlFrete * desconto;
