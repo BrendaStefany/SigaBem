@@ -15,7 +15,9 @@ outros arquivos .porperties também foram criados, estes, responsáveis pela con
 
 ## Utilização da Api
  <p align="left">Para utilizar a api, é necessário apenas entrar no link do projeto, que está online, https://sigabemprojectbs.herokuapp.com/swagger-ui/, e as informações necessárias para cálculo: peso, cepOrigem, cepDestino, e nomeDestinatario, após execução, o usuário receberá as informações de valor do frete(vlFrete), data da consulta(dataConsulta), data prevista para entrega(dataPrevistaEntrega).
- Tanto as informações enviadas, quanto as que retornam, são registradas no banco online do heroku. </p>
+ Tanto as informações enviadas, quanto as que retornam, são registradas no banco online do heroku.
+
+Caso o código seja executado local, utilizando o postman, foram criadas tratativas de erros, apontando especificamente se tem algum campo incorreto, ou nulo. </p>
  
  ## Exemplo de Requisição
  { <br>
